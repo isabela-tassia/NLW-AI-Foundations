@@ -7,19 +7,30 @@ import { convert } from "./convert.js"
 
 const app = express()
 app.use(express.json())
-app.use(cors({ origin: ["http://localhost:5173"] }))
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://kaleidoscopic-pony-46b1e4.netlify.app/",
+    ],
+  })
+)
+
+app.get("/teste/route", (req, res) => {
+  res.send("Api funcionando!")
+})
 
 app.get("/summary/:id", async (req, res) => {
-  try{
-  console.log("Iniciando processo de download")
-  await download(req.params.id)
-  const audioConverted = await convert()
+  try {
+    console.log("Iniciando processo de download")
+    await download(req.params.id)
+    const audioConverted = await convert()
 
-  const result = await transcribe(audioConverted)
+    const result = await transcribe(audioConverted)
 
-  return res.json({ result })
-  //download do video realizado com sucesso!"
-  //res.send('ID do video:' + req.params.id)
+    return res.json({ result })
+    //download do video realizado com sucesso!"
+    //res.send('ID do video:' + req.params.id)
   } catch (error) {
     console.log(error)
     return res.json({ error })
@@ -28,8 +39,8 @@ app.get("/summary/:id", async (req, res) => {
 
 app.post("/summary", async (req, res) => {
   try {
-  const result = await summarize(req.body.text)
-  return res.json({ result })
+    const result = await summarize(req.body.text)
+    return res.json({ result })
   } catch (error) {
     console.log(error)
     return res.json({ error })
