@@ -1,6 +1,6 @@
 <h2>Transcri&ccedil;&atilde;o com Intelig&ecirc;ncia Artificial</h2>
 
-<h3>Acesse o projeto clicando aqui: <a href="https://kaleidoscopic-pony-46b1e4.netlify.app/">🪐</a></h3>
+<h3>Acesse o front-end do projeto clicando aqui: <a href="https://kaleidoscopic-pony-46b1e4.netlify.app/">🪐</a></h3>
 
 <p>&nbsp;</p>
 
